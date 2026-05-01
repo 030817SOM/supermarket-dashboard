@@ -77,11 +77,12 @@ export function cleanAndEncode(raw: Row[]): Dataset {
   }
 
   
-  const product = labelEncode(dedup.map((r) => r.product_name));
-  const store = labelEncode(dedup.map((r) => r.store));
-  const payment = labelEncode(dedup.map((r) => r.payment_method));
-  const customer = labelEncode(dedup.map((r) => r.customer_type));
+  const product = labelEncode(dedup.map((r) => String(r.product_name)));
+  const store = labelEncode(dedup.map((r) => String(r.store)));
+  const payment = labelEncode(dedup.map((r) => String(r.payment_method)));
+  const customer = labelEncode(dedup.map((r) => String(r.customer_type)));
 
+  
   const numericRows = dedup.map((r, i) => ({
     quantity: r.quantity,
     product_name: product.encoded[i],
