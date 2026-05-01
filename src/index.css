@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Instrument+Serif&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 30% 6%;
+    --foreground: 60 10% 96%;
+
+    --card: 220 28% 9%;
+    --card-foreground: 60 10% 96%;
+
+    --popover: 220 28% 9%;
+    --popover-foreground: 60 10% 96%;
+
+    --primary: 75 95% 60%;
+    --primary-foreground: 220 40% 8%;
+
+    --secondary: 220 22% 14%;
+    --secondary-foreground: 60 10% 96%;
+
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 10% 65%;
+
+    --accent: 195 90% 55%;
+    --accent-foreground: 220 40% 8%;
+
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 60 10% 96%;
+
+    --border: 220 20% 18%;
+    --input: 220 22% 14%;
+    --ring: 75 95% 60%;
+
+    --chart-1: 75 95% 60%;
+    --chart-2: 195 90% 55%;
+    --chart-3: 320 80% 65%;
+    --chart-4: 30 95% 60%;
+    --chart-5: 260 75% 65%;
+
+    --gradient-hero: radial-gradient(ellipse at top, hsl(75 95% 60% / 0.15), transparent 50%), radial-gradient(ellipse at bottom right, hsl(195 90% 55% / 0.12), transparent 50%);
+    --gradient-primary: linear-gradient(135deg, hsl(75 95% 60%), hsl(95 90% 55%));
+    --gradient-card: linear-gradient(180deg, hsl(220 28% 11%), hsl(220 28% 8%));
+    --shadow-glow: 0 0 60px hsl(75 95% 60% / 0.25);
+    --shadow-card: 0 20px 50px -20px hsl(220 60% 2% / 0.6);
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', sans-serif;
+    background-image: var(--gradient-hero);
+    background-attachment: fixed;
+  }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .font-serif { font-family: 'Instrument Serif', serif; }
+}
+
+@layer components {
+  .glass-card {
+    background: var(--gradient-card);
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-card);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
+  }
+  .glow-primary { box-shadow: var(--shadow-glow); }
+  .grid-bg {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
