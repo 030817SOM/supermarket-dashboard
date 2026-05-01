@@ -115,7 +115,17 @@ export const EDAPanel = ({ data }: { data: Dataset }) => {
               <CartesianGrid stroke="hsl(var(--border))" strokeDasharray="3 3" />
               <XAxis dataKey="name" stroke="hsl(var(--muted-foreground))" fontSize={11} />
               <YAxis stroke="hsl(var(--muted-foreground))" fontSize={11} />
-              <Tooltip contentStyle={tooltipStyle} cursor={{ fill: "hsl(var(--accent) / 0.08)" }} formatter={(v?: number) => v !== undefined ? fmt(v) : ""} />
+              <Tooltip
+                contentStyle={tooltipStyle}
+                cursor={{ fill: "hsl(var(--accent) / 0.08)" }}
+                formatter={(value: string | number | readonly (string | number)[] | undefined) => {
+                  if (Array.isArray(value)) {
+                    const first = value[0];
+                    return typeof first === "number" ? fmt(first) : String(first ?? "");
+                  }
+                  return typeof value === "number" ? fmt(value) : String(value ?? "");
+                }}
+              />
               <Bar dataKey="value" fill="hsl(var(--accent))" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
